@@ -27,8 +27,11 @@ class Hub : AppCompatActivity() {
 
         // This loop will create 20 Views containing
         // the image with the count of view
-        for (i in 1..20) {
-            data.add(ItemsViewModel(R.drawable.ic_menu_agenda, "Item " + i))
+        for (i in 1..9) {
+            if(i%2 ==0)
+                data.add(ItemsViewModel( "INC00239" + i , "04/09/2"+i ,"Aberto"))
+            else
+                data.add(ItemsViewModel( "INC00239" + i , "04/09/2"+i ,"Fechado"))
         }
 
         // This will pass the ArrayList to our Adapter

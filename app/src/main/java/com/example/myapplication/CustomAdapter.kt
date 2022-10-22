@@ -1,9 +1,9 @@
 package com.example.myapplication
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -25,10 +25,15 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
         val ItemsViewModel = mList[position]
 
         // sets the image to the imageview from our itemHolder class
-        holder.imageView.setImageResource(ItemsViewModel.image)
 
         // sets the text to the textview from our itemHolder class
-        holder.textView.text = ItemsViewModel.text
+        holder.id.text = ItemsViewModel.id
+        holder.info.text = ItemsViewModel.info
+        holder.status.text = ItemsViewModel.status
+        if(ItemsViewModel.status=="Aberto")
+            holder.status.setTextColor(Color.rgb(46, 166, 23))
+        else if (ItemsViewModel.status=="Fechado")
+            holder.status.setTextColor(Color.DKGRAY)
 
     }
 
@@ -39,7 +44,8 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.imageview)
-        val textView: TextView = itemView.findViewById(R.id.textView)
+        val id: TextView = itemView.findViewById(R.id.viewId)
+        val info: TextView = itemView.findViewById(R.id.info)
+        val status: TextView = itemView.findViewById(R.id.status)
     }
 }
