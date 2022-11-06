@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".IncidentView">
 
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="75dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
