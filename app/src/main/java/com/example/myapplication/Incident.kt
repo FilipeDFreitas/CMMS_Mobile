@@ -1,6 +1,17 @@
 package com.example.myapplication
 
-data class Incident(val id: String, val info: String, val status: String) : java.io.Serializable
+
+data class Incident(
+
+    val id: String,
+    val titulo: String,
+    val tipo: String,
+    val local: String,
+    val equipamento: String,
+    val status: String,
+    val data:String
+
+    ) : java.io.Serializable
 
 
 

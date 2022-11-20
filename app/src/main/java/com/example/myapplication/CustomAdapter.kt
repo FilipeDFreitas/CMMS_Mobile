@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 
 class CustomAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
@@ -40,7 +39,7 @@ class CustomAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<Cu
 
         // sets the text to the textview from our itemHolder class
         holder.id.text = incident.id
-        holder.info.text = incident.info
+        holder.info.text = incident.titulo
         holder.status.text = incident.status
         if(incident.status=="Aberto")
             holder.status.setTextColor(Color.rgb(46, 166, 23))
