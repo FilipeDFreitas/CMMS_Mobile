@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 
 
 class IncidentView : AppCompatActivity(), AdapterView.OnItemSelectedListener{
@@ -13,10 +15,47 @@ class IncidentView : AppCompatActivity(), AdapterView.OnItemSelectedListener{
     private lateinit var  adapterEquipamento : ArrayAdapter<String>
     private lateinit var  adapterLocal : ArrayAdapter<String>
 
+
+
+
     @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_incident_view)
+
+        //comentários
+
+        // getting the recyclerview by its id
+        val recyclerComments = findViewById<RecyclerView>(com.example.myapplication.R.id.recycler_comments)
+
+        // this creates a vertical layout Manager
+        recyclerComments.layoutManager = LinearLayoutManager(this)
+
+        // ArrayList of class ItemsViewModel
+        val data = ArrayList<Incident>()
+
+        // This loop will create 10 Views containing
+        // the image with the count of view
+        for (i: Int in 1..2) {
+            if(i%2 ==0)
+                data.add(0,Incident( "[Admin]" , "10-12-2020" ,"Substituicão","A07 - Térreo - SEPT","Lampada","Verificando problema","31-12-2018"))
+            else
+                data.add(0,Incident( "[Usuário]", "05-12-2020" ,"Quebra","Banheiro - Primeiro andar - SEPT","Pia","Problema encontrado no local xxxxx onde não consigo mais utilizar a internet por alguma razão","31-12-2022"))
+        }
+
+        // This will pass the ArrayList to our Adapter
+        val adapter = CommentAdapter(data)
+
+        // Setting the Adapter with the recyclerview
+        recyclerComments.adapter = adapter
+
+        adapter.setOnItemClickListener(object : CommentAdapter.onItemClickListener {
+            override fun onItemClick(position: Int) {
+                Toast.makeText(this@IncidentView,"Foi no $position",Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        //comentários
 
         val incident = intent.getSerializableExtra("inc") as Incident
         findViewById<TextView>(R.id.incShow).text = incident.id
@@ -53,6 +92,7 @@ class IncidentView : AppCompatActivity(), AdapterView.OnItemSelectedListener{
         adapterLocal = ArrayAdapter(this,android.R.layout.simple_spinner_item,locais)
         spinLocal.adapter = adapterLocal
         spinLocal.onItemSelectedListener = this
+
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {

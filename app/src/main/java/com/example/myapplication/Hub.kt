@@ -28,7 +28,7 @@ class Hub : AppCompatActivity(){
 
         // This loop will create 20 Views containing
         // the image with the count of view
-        for (i in 1..9) {
+        for (i: Int in 1..9) {
             if(i%2 ==0)
                 data.add(0,Incident( "INC00239" + i , "Vaso quebrado" ,"Quebra","Banheiro - Primeiro andar - SEPT","Pia","Aberto","31-12-2022"))
             else

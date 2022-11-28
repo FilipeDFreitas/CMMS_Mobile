@@ -173,26 +173,34 @@
             android:id="@+id/editTextTextMultiLine"
             android:layout_width="304dp"
             android:layout_height="95dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="396dp"
             android:ems="10"
             android:gravity="start|top"
+            android:importantForAutofill="no"
             android:inputType="textMultiLine"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:importantForAutofill="no"
             tools:ignore="LabelFor" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="80dp"
             android:layout_height="87dp"
-            android:layout_marginStart="323dp"
-            android:layout_marginTop="400dp"
+            android:layout_marginStart="324dp"
+            android:layout_marginTop="404dp"
             android:text="OK"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_comments"
+            android:layout_width="404dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="488dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
