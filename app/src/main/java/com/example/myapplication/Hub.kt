@@ -3,6 +3,9 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,6 +54,26 @@ class Hub : AppCompatActivity(){
                 startActivity(intent)
             }
         })
+    }
+    fun newInc(view: View) {
+        val intent = Intent(this, IncidentView::class.java)
+        startActivity(intent)
+
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_user,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.inc_choice ->{}
+            R.id.perfil_choice -> {
+                val intent = Intent(this, Perfil::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 

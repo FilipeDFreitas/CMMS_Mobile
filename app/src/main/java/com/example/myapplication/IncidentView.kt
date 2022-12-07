@@ -2,66 +2,99 @@ package com.example.myapplication
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class IncidentView : AppCompatActivity(), AdapterView.OnItemSelectedListener{
     private lateinit var  adapterTipo : ArrayAdapter<String>
     private lateinit var  adapterEquipamento : ArrayAdapter<String>
     private lateinit var  adapterLocal : ArrayAdapter<String>
-
+    var c : Calendar = Calendar.getInstance()
+    private var df : SimpleDateFormat? = null
 
 
 
     @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_incident_view)
+        if (intent.getSerializableExtra("inc") != null) {
+            setContentView(R.layout.activity_incident_view)
 
-        //comentários
 
-        // getting the recyclerview by its id
-        val recyclerComments = findViewById<RecyclerView>(com.example.myapplication.R.id.recycler_comments)
 
-        // this creates a vertical layout Manager
-        recyclerComments.layoutManager = LinearLayoutManager(this)
+            //comentários
 
-        // ArrayList of class ItemsViewModel
-        val data = ArrayList<Incident>()
+            // getting the recyclerview by its id
+            val recyclerComments =
+                findViewById<RecyclerView>(com.example.myapplication.R.id.recycler_comments)
 
-        // This loop will create 10 Views containing
-        // the image with the count of view
-        for (i: Int in 1..2) {
-            if(i%2 ==0)
-                data.add(0,Incident( "[Admin]" , "10-12-2020" ,"Substituicão","A07 - Térreo - SEPT","Lampada","Verificando problema","31-12-2018"))
-            else
-                data.add(0,Incident( "[Usuário]", "05-12-2020" ,"Quebra","Banheiro - Primeiro andar - SEPT","Pia","Problema encontrado no local xxxxx onde não consigo mais utilizar a internet por alguma razão","31-12-2022"))
-        }
+            // this creates a vertical layout Manager
+            recyclerComments.layoutManager = LinearLayoutManager(this)
 
-        // This will pass the ArrayList to our Adapter
-        val adapter = CommentAdapter(data)
+            // ArrayList of class ItemsViewModel
+            val data = ArrayList<Incident>()
 
-        // Setting the Adapter with the recyclerview
-        recyclerComments.adapter = adapter
-
-        adapter.setOnItemClickListener(object : CommentAdapter.onItemClickListener {
-            override fun onItemClick(position: Int) {
-                Toast.makeText(this@IncidentView,"Foi no $position",Toast.LENGTH_SHORT).show()
+            // This loop will create 10 Views containing
+            // the image with the count of view
+            for (i: Int in 1..2) {
+                if (i % 2 == 0)
+                    data.add(0,
+                        Incident("[Admin]",
+                            "10-12-2020",
+                            "Substituicão",
+                            "A07 - Térreo - SEPT",
+                            "Lampada",
+                            "Verificando problema",
+                            "31-12-2018"))
+                else
+                    data.add(0,
+                        Incident("[Usuário]",
+                            "05-12-2020",
+                            "Quebra",
+                            "Banheiro - Primeiro andar - SEPT",
+                            "Pia",
+                            "Problema encontrado no local xxxxx onde não consigo mais utilizar a internet por alguma razão",
+                            "31-12-2022"))
             }
-        })
 
-        //comentários
+            // This will pass the ArrayList to our Adapter
+            val adapter = CommentAdapter(data)
 
-        val incident = intent.getSerializableExtra("inc") as Incident
-        findViewById<TextView>(R.id.incShow).text = incident.id
-        findViewById<TextView>(R.id.tituloShow).text = incident.titulo
-        findViewById<TextView>(R.id.tituloShow).isEnabled = false
-        findViewById<TextView>(R.id.dataShow).text = incident.data
+            // Setting the Adapter with the recyclerview
+            recyclerComments.adapter = adapter
+
+            adapter.setOnItemClickListener(object : CommentAdapter.onItemClickListener {
+                override fun onItemClick(position: Int) {
+                    Toast.makeText(this@IncidentView, "Foi no $position", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+            val incident = intent.getSerializableExtra("inc") as Incident
+            findViewById<TextView>(R.id.incShow).text = incident.id
+            findViewById<TextView>(R.id.tituloShow).text = incident.titulo
+            findViewById<TextView>(R.id.tituloShow).isEnabled = false
+            findViewById<TextView>(R.id.dataShow).text = incident.data
+
+        }else{
+            setContentView(R.layout.activity_new_incident_view)
+
+        }
+        df = SimpleDateFormat("dd/MM/yyyy")
+        val formattedDate = df!!.format(c.time)
+
+        findViewById<TextView>(R.id.tituloShow).isEnabled = true
+        findViewById<TextView>(R.id.dataShow).text = "$formattedDate"
 
         // Implementacao campo TIPO
 
@@ -121,6 +154,24 @@ class IncidentView : AppCompatActivity(), AdapterView.OnItemSelectedListener{
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_user,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.inc_choice ->{
+                val intent = Intent(this, Hub::class.java)
+                startActivity(intent)
+            }
+            R.id.perfil_choice -> {
+                val intent = Intent(this, Perfil::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
