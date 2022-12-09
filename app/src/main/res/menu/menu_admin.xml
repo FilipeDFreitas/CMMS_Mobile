@@ -13,6 +13,10 @@
                 android:title="INCIDENTES"
                 app:showAsAction="never" />
             <item
+                android:id="@+id/cad_choice"
+                android:title="CADASTROS"
+                app:showAsAction="never" />
+            <item
                 android:id="@+id/perfil_choice"
                 android:title="PERFIL"
                 app:showAsAction="never" />

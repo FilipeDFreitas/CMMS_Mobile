@@ -17,7 +17,7 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextLogin" />
 
     <Button
         android:id="@+id/buttonLogin"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"

@@ -50,6 +50,7 @@ class Hub : AppCompatActivity(){
                 //Toast.makeText(this@Hub,"Foi no $position",Toast.LENGTH_SHORT).show()
                 val incident = sortedList[position]
                 val intent = Intent(this@Hub, IncidentView::class.java)
+                intent.putExtra("user_type",intent.getSerializableExtra("user_type"))
                 intent.putExtra("inc",incident)
                 startActivity(intent)
             }
@@ -61,15 +62,37 @@ class Hub : AppCompatActivity(){
 
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_user,menu)
+        val prefs = getSharedPreferences("unique_name", MODE_PRIVATE)
+        when (prefs.getString("user_type","")){
+            "user"-> menuInflater.inflate(R.menu.menu_user,menu)
+            "admin" -> menuInflater.inflate(R.menu.menu_admin,menu)
+            "" -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.inc_choice ->{}
+            R.id.cad_choice ->{
+                val intent = Intent(this, Cadastros::class.java)
+                startActivity(intent)
+            }
             R.id.perfil_choice -> {
                 val intent = Intent(this, Perfil::class.java)
+                startActivity(intent)
+            }
+            R.id.logout ->{
+                val editor = getSharedPreferences("unique_name", MODE_PRIVATE).edit()
+                editor.putString("user_type", "")
+                editor.commit()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }
         }

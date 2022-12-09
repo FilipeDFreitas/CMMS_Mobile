@@ -76,7 +76,7 @@ class IncidentView : AppCompatActivity(), AdapterView.OnItemSelectedListener{
 
             adapter.setOnItemClickListener(object : CommentAdapter.onItemClickListener {
                 override fun onItemClick(position: Int) {
-                    Toast.makeText(this@IncidentView, "Foi no $position", Toast.LENGTH_SHORT).show()
+
                 }
             })
 
@@ -156,7 +156,17 @@ class IncidentView : AppCompatActivity(), AdapterView.OnItemSelectedListener{
     override fun onNothingSelected(p0: AdapterView<*>?) {
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_user,menu)
+        val prefs = getSharedPreferences("unique_name", MODE_PRIVATE)
+        when (prefs.getString("user_type","")){
+            "user"-> menuInflater.inflate(R.menu.menu_user,menu)
+            "admin" -> menuInflater.inflate(R.menu.menu_admin,menu)
+            "" -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -166,8 +176,20 @@ class IncidentView : AppCompatActivity(), AdapterView.OnItemSelectedListener{
                 val intent = Intent(this, Hub::class.java)
                 startActivity(intent)
             }
+            R.id.cad_choice ->{
+                val intent = Intent(this, Cadastros::class.java)
+                startActivity(intent)
+            }
             R.id.perfil_choice -> {
                 val intent = Intent(this, Perfil::class.java)
+                startActivity(intent)
+            }
+            R.id.logout ->{
+                val editor = getSharedPreferences("unique_name", MODE_PRIVATE).edit()
+                editor.putString("user_type", "")
+                editor.commit()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }
         }

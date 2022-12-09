@@ -6,12 +6,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 
-class Perfil : AppCompatActivity() {
-
-
+class Cadastros : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_perfil)
+        setContentView(R.layout.activity_cadastros)
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val prefs = getSharedPreferences("unique_name", MODE_PRIVATE)
@@ -27,7 +25,6 @@ class Perfil : AppCompatActivity() {
 
         return super.onCreateOptionsMenu(menu)
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.inc_choice ->{
@@ -38,7 +35,10 @@ class Perfil : AppCompatActivity() {
                 val intent = Intent(this, Cadastros::class.java)
                 startActivity(intent)
             }
-            R.id.perfil_choice -> {}
+            R.id.perfil_choice -> {
+                val intent = Intent(this, Perfil::class.java)
+                startActivity(intent)
+            }
             R.id.logout ->{
                 val editor = getSharedPreferences("unique_name", MODE_PRIVATE).edit()
                 editor.putString("user_type", "")
