@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class IncidentAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<IncidentAdapter.ViewHolder>() {
 
     private lateinit var mListener : onItemClickListener
 
@@ -25,7 +25,7 @@ class CustomAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<Cu
         // inflates the card_view_design view
         // that is used to hold list item
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.card_view_design, parent, false)
+            .inflate(R.layout.incident_design, parent, false)
 
         return ViewHolder(view,mListener)
     }

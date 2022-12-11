@@ -40,12 +40,12 @@ class Hub : AppCompatActivity(){
         val sortedList = data.sortedWith(compareBy { it.status })
 
         // This will pass the ArrayList to our Adapter
-        val adapter = CustomAdapter(sortedList)
+        val adapter = IncidentAdapter(sortedList)
 
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
 
-        adapter.setOnItemClickListener(object : CustomAdapter.onItemClickListener {
+        adapter.setOnItemClickListener(object : IncidentAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
                 //Toast.makeText(this@Hub,"Foi no $position",Toast.LENGTH_SHORT).show()
                 val incident = sortedList[position]
