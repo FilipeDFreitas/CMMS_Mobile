@@ -63,7 +63,7 @@ class IncidentAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<
 
         val id: TextView = itemView.findViewById(R.id.viewId)
         val info: TextView = itemView.findViewById(R.id.info)
-        val status: TextView = itemView.findViewById(R.id.status)
+        val status: TextView = itemView.findViewById(R.id.descricao)
 
     }
 

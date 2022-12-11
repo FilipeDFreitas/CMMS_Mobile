@@ -18,6 +18,7 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="option"
             android:text="Tipos de Incidentes"
             android:textColor="@color/black" />
 
@@ -32,6 +33,7 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="option"
             android:text="Equipamentos"
             android:textColor="@color/black" />
 
@@ -46,6 +48,7 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="option"
             android:text="Locais"
             android:textColor="@color/black" />
 
@@ -60,6 +63,7 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="option"
             android:text="Usuários"
             android:textColor="@color/black" />
 

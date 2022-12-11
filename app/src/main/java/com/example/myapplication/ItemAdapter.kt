@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
+class ItemAdapter(private val mList: List<Item>) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
     private lateinit var mListener : onItemClickListener
 
@@ -24,7 +24,7 @@ class ItemAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<Item
         // inflates the card_view_design view
         // that is used to hold list item
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.comment_design, parent, false)
+            .inflate(R.layout.item_design, parent, false)
 
         return ViewHolder(view,mListener)
     }
@@ -33,13 +33,12 @@ class ItemAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<Item
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val incident = mList[position]
+        val item = mList[position]
 
 
         // sets the text to the textview from our itemHolder class
-        holder.id.text = incident.id
-        holder.info.text = incident.titulo
-        holder.status.text = incident.status
+        holder.id.text = item.id
+        holder.status.text = item.titulo
 
 
     }
@@ -58,8 +57,7 @@ class ItemAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<Item
         }
 
         val id: TextView = itemView.findViewById(R.id.viewId)
-        val info: TextView = itemView.findViewById(R.id.info)
-        val status: TextView = itemView.findViewById(R.id.status)
+        val status: TextView = itemView.findViewById(R.id.descricao)
 
     }
 
