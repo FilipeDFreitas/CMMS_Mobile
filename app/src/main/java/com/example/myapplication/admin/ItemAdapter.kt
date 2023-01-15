@@ -1,10 +1,12 @@
-package com.example.myapplication
+package com.example.myapplication.admin
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
+import com.example.myapplication.models.Item
 
 class ItemAdapter(private val mList: List<Item>) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 

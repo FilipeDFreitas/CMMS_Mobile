@@ -1,9 +1,12 @@
-package com.example.myapplication
+package com.example.myapplication.admin
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
+import com.example.myapplication.base.Base
+import com.example.myapplication.models.Item
 
 class ItemListAdmin : Base() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,7 +14,7 @@ class ItemListAdmin : Base() {
         setContentView(R.layout.activity_item_list_admin)
 
         // getting the recyclerview by its id
-        val recyclerview = findViewById<RecyclerView>(com.example.myapplication.R.id.recyclerview_item)
+        val recyclerview = findViewById<RecyclerView>(R.id.recyclerview_item)
 
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
@@ -23,9 +26,11 @@ class ItemListAdmin : Base() {
         // the image with the count of view
         for (i: Int in 1..9) {
             if(i%2 ==0)
-                data.add(0,Item( "INC00239" + i , "Item"+i ,"Quebra","Banheiro - Primeiro andar - SEPT"))
+                data.add(0,
+                    Item( "INC00239" + i , "Item"+i ,"","")
+                )
             else
-                data.add(0,Item( "INC00239" + i , "Item"+i ,"Substituicão","A07 - Térreo - SEPT"))
+                data.add(0, Item( "INC00239" + i , "Item"+i ,"",""))
         }
         val sortedList = data.sortedWith(compareBy { it.id })
 

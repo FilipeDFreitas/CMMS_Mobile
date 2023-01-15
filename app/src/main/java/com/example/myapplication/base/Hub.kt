@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.base
 
 import android.content.Intent
 import android.os.Build
@@ -10,6 +10,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.admin.Cadastros
+import com.example.myapplication.R
+import com.example.myapplication.login.MainActivity
+import com.example.myapplication.models.Incident
 
 
 class Hub : AppCompatActivity(){
@@ -21,7 +25,7 @@ class Hub : AppCompatActivity(){
         setContentView(R.layout.activity_hub)
 
         // getting the recyclerview by its id
-        val recyclerview = findViewById<RecyclerView>(com.example.myapplication.R.id.recyclerview)
+        val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
 
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
@@ -33,9 +37,13 @@ class Hub : AppCompatActivity(){
         // the image with the count of view
         for (i: Int in 1..9) {
             if(i%2 ==0)
-                data.add(0,Incident( "INC00239" + i , "Vaso quebrado" ,"Quebra","Banheiro - Primeiro andar - SEPT","Pia","Aberto","31-12-2022"))
+                data.add(0,
+                    Incident( "INC00239" + i , "Vaso quebrado" ,"Quebra","Banheiro - Primeiro andar - SEPT","Pia","Aberto","31-12-2022")
+                )
             else
-                data.add(0,Incident( "INC00239" + i , "Luz queimada " ,"Substituicão","A07 - Térreo - SEPT","Lampada","Fechado","31-12-2018"))
+                data.add(0,
+                    Incident( "INC00239" + i , "Luz queimada " ,"Substituicão","A07 - Térreo - SEPT","Lampada","Fechado","31-12-2018")
+                )
         }
         val sortedList = data.sortedWith(compareBy { it.status })
 

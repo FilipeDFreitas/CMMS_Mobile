@@ -1,9 +1,12 @@
-package com.example.myapplication
+package com.example.myapplication.base
 
 import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.*
+import com.example.myapplication.admin.Cadastros
+import com.example.myapplication.login.MainActivity
 
 open class Base: AppCompatActivity(){
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

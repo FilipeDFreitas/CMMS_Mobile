@@ -1,8 +1,10 @@
-package com.example.myapplication
+package com.example.myapplication.admin
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.example.myapplication.R
+import com.example.myapplication.base.Base
 
 class Cadastros :  Base() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,13 +1,14 @@
-package com.example.myapplication
+package com.example.myapplication.base
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
+import com.example.myapplication.models.Incident
 
-class IncidentAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<IncidentAdapter.ViewHolder>() {
+class CommentAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
 
     private lateinit var mListener : onItemClickListener
 
@@ -25,7 +26,7 @@ class IncidentAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<
         // inflates the card_view_design view
         // that is used to hold list item
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.incident_design, parent, false)
+            .inflate(R.layout.comment_design, parent, false)
 
         return ViewHolder(view,mListener)
     }
@@ -41,10 +42,7 @@ class IncidentAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<
         holder.id.text = incident.id
         holder.info.text = incident.titulo
         holder.status.text = incident.status
-        if(incident.status=="Aberto")
-            holder.status.setTextColor(Color.rgb(46, 166, 23))
-        else if (incident.status=="Fechado")
-            holder.status.setTextColor(Color.DKGRAY)
+
 
     }
 
@@ -66,6 +64,7 @@ class IncidentAdapter(private val mList: List<Incident>) : RecyclerView.Adapter<
         val status: TextView = itemView.findViewById(R.id.descricao)
 
     }
+
 
 
 

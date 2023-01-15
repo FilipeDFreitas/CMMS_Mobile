@@ -13,28 +13,28 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".ItemListAdmin"
+            android:name=".admin.ItemListAdmin"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Cadastros"
+            android:name=".admin.Cadastros"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Perfil"
+            android:name=".base.Perfil"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".IncidentView"
+            android:name=".base.IncidentView"
             android:exported="false"
             android:windowSoftInputMode="stateHidden">
             <meta-data
@@ -42,21 +42,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Hub"
+            android:name=".base.Hub"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Forgot"
+            android:name=".login.Forgot"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".login.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
