@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.models.Item
@@ -19,6 +20,7 @@ class ItemAdapter(private val mList: List<Item>) : RecyclerView.Adapter<ItemAdap
 
     fun setOnItemClickListener(listener : onItemClickListener){
         mListener = listener
+
     }
 
     // create new views

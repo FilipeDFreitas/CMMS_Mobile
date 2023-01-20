@@ -1,6 +1,8 @@
 package com.example.myapplication.admin
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,10 +11,11 @@ import com.example.myapplication.base.Base
 import com.example.myapplication.models.Item
 
 class ItemListAdmin : Base() {
+    lateinit var type: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_list_admin)
-
+        type = intent.getSerializableExtra("type").toString()
         // getting the recyclerview by its id
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview_item)
 
@@ -22,15 +25,28 @@ class ItemListAdmin : Base() {
         // ArrayList of class ItemsViewModel
         val data = ArrayList<Item>()
 
-        // This loop will create 20 Views containing
-        // the image with the count of view
         for (i: Int in 1..9) {
-            if(i%2 ==0)
-                data.add(0,
-                    Item( "INC00239" + i , "Item"+i ,"","")
-                )
+            if (type == "inc")
+            // catar dados de INC
+
+                data.add(0, Item("INC00239" + i, "Item " + i," "))
+
+            else if (type == "equip")
+            // catar dados de EQUIP
+
+                data.add(0, Item("EQP0239" + i, "Item " + i," "))
+
+            else if (type == "local")
+            // catar dados de LOCAL
+
+                data.add(0, Item("LOC00239" + i, "Item " + i," "))
+
             else
-                data.add(0, Item( "INC00239" + i , "Item"+i ,"",""))
+            // catar dados de USER
+
+                data.add(0, Item("USR00239" + i, "Item " + i," "))
+
+
         }
         val sortedList = data.sortedWith(compareBy { it.id })
 
@@ -42,13 +58,19 @@ class ItemListAdmin : Base() {
 
         adapter.setOnItemClickListener(object : ItemAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
-                Toast.makeText(this@ItemListAdmin,"Foi no $position",Toast.LENGTH_SHORT).show()
-                //val incident = sortedList[position]
-                //val intent = Intent(this@ItemListAdmin, IncidentView::class.java)
-                //intent.putExtra("user_type",intent.getSerializableExtra("user_type"))
-                //intent.putExtra("inc",incident)
-                //startActivity(intent)
+                val item = sortedList[position]
+                val intent = Intent(this@ItemListAdmin, ItemView::class.java)
+                intent.putExtra("id",item.id)
+                intent.putExtra("nome",item.titulo)
+                intent.putExtra("desc",item.desc)
+                intent.putExtra("type",type)
+                startActivity(intent)
             }
         })
+    }
+    fun newItem(view: View) {
+        val intent = Intent(this, ItemView::class.java)
+        intent.putExtra("type",type)
+        startActivity(intent)
     }
 }

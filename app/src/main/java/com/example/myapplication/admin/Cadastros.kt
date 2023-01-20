@@ -11,11 +11,25 @@ class Cadastros :  Base() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastros)
     }
-
-    fun option(view: View) {
+    fun inc(view: View) {
         val intent = Intent(this, ItemListAdmin::class.java)
+        intent.putExtra("type","inc")
         startActivity(intent)
-
+    }
+    fun equip(view: View) {
+        val intent = Intent(this, ItemListAdmin::class.java)
+        intent.putExtra("type","equip")
+        startActivity(intent)
+    }
+    fun local(view: View) {
+        val intent = Intent(this, ItemListAdmin::class.java)
+        intent.putExtra("type","local")
+        startActivity(intent)
+    }
+    fun user(view: View) {
+        val intent = Intent(this, ItemListAdmin::class.java)
+        intent.putExtra("type","user")
+        startActivity(intent)
     }
 
 }
