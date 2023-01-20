@@ -59,7 +59,11 @@ class ItemListAdmin : Base() {
         adapter.setOnItemClickListener(object : ItemAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
                 val item = sortedList[position]
-                val intent = Intent(this@ItemListAdmin, ItemView::class.java)
+                var intent = Intent()
+                if (type == "user")
+                    intent = Intent(this@ItemListAdmin, UserView::class.java)
+                else
+                    intent = Intent(this@ItemListAdmin, ItemView::class.java)
                 intent.putExtra("id",item.id)
                 intent.putExtra("nome",item.titulo)
                 intent.putExtra("desc",item.desc)
@@ -69,7 +73,11 @@ class ItemListAdmin : Base() {
         })
     }
     fun newItem(view: View) {
-        val intent = Intent(this, ItemView::class.java)
+        var intent = Intent()
+        if (type == "user")
+            intent = Intent(this, UserView::class.java)
+        else
+            intent = Intent(this, ItemView::class.java)
         intent.putExtra("type",type)
         startActivity(intent)
     }

@@ -35,13 +35,17 @@ class ItemView : Base(){
             findViewById<TextView>(R.id.tituloNome).text = nome
             findViewById<TextView>(R.id.tituloDesc).text = desc
             findViewById<TextView>(R.id.numID).text = id
+
         }
-        if (type == "equip")
-            findViewById<TextView>(R.id.buttonCreate).text = "Criar Equipamento"
-        else if (type == "local")
-            findViewById<TextView>(R.id.buttonCreate).text = "Criar Local"
-        else if (type == "inc")
-            findViewById<TextView>(R.id.buttonCreate).text = "Criar Incidente"
+
+
+            if (type == "equip")
+                findViewById<TextView>(R.id.buttonCreate).text = "Salvar Equipamento"
+            else if (type == "local")
+                findViewById<TextView>(R.id.buttonCreate).text = "Salvar Local"
+            else if (type == "inc")
+                findViewById<TextView>(R.id.buttonCreate).text = "Salvar Incidente"
+
     }
 
 
