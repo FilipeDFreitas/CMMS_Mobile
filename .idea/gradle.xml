@@ -7,10 +7,11 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="Embedded JDK" />
         <option name="modules">
           <set>
-            <option value="/mnt/Steam/Home/filipefreitas/Documents/Estudo/UFPR/TCC/CMMS_mobile" />
-            <option value="/mnt/Steam/Home/filipefreitas/Documents/Estudo/UFPR/TCC/CMMS_mobile/app" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
       </GradleProjectSettings>

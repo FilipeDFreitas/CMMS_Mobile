@@ -1,9 +1,15 @@
 package com.example.myapplication.models
 
 data class User(
-    val id: String,
-    val id_owner: String,
-    val titulo: String,
-    val comentario: String,
-    val data:String
+    val id: Int,
+    val name: String,
+    val phone: String,
+    val document: String,
+    val address: String,
+    val email: String,
+    val role: Int
+    )
+
+data class UserAPI(
+    val entity: User
 )

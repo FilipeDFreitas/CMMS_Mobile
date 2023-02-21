@@ -8,6 +8,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.base.Hub
 import com.example.myapplication.R
+import com.example.myapplication.conn.ApiClient
+import com.example.myapplication.conn.ConnResponse
+import com.example.myapplication.models.Token
+import com.example.myapplication.models.User
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +20,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
     }
 
     fun forgotPassword(view: View) {
@@ -24,9 +31,32 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
 
     }
+
+
     fun hub(view: View) {
         val editor = getSharedPreferences("unique_name", MODE_PRIVATE).edit()
         val intent = Intent(this, Hub::class.java)
+        ApiClient().auth(
+            findViewById<EditText>(R.id.editTextLogin).text.toString(),
+            findViewById<EditText>(R.id.editTextPassword).text.toString(),
+            object : ConnResponse<Token>{
+                override fun success(t: Token) {
+                    editor.putString("token", t.token)
+                    editor.putInt("userID", t.userId)
+                    editor.commit()
+                    startActivity(intent)
+                }
+
+                override fun fail() {
+                    Toast.makeText(this@MainActivity,"Login invalido!",Toast.LENGTH_SHORT).show();
+                }
+
+                override fun error(err: String) {
+                    Toast.makeText(this@MainActivity, "Error: Falha ao se conectar com o servidor",Toast.LENGTH_SHORT).show();
+                }
+
+            })
+
         when (findViewById<EditText>(R.id.editTextLogin).text.toString()){
             "user" -> {
                 editor.putString("user_type", "user")
@@ -39,9 +69,9 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             else -> {
-                Toast.makeText(this,"Login invalido!",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this,"Login invalido!",Toast.LENGTH_SHORT).show();
                 findViewById<EditText>(R.id.editTextLogin).setText("")
-                findViewById<EditText>(R.id.editTextTextPassword).setText("")
+                findViewById<EditText>(R.id.editTextPassword).setText("")
             }
         }
 

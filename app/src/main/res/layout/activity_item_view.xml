@@ -4,12 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".base.IncidentView">
+    tools:context=".admin.ItemView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+        <Spinner
+            android:id="@+id/localSpinner"
+            android:layout_width="233dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="148dp"
+            android:layout_marginTop="184dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/incText"
@@ -63,6 +73,19 @@
             tools:ignore="HardcodedText" />
 
         <TextView
+            android:id="@+id/dataTextLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="68dp"
+            android:text="Local:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tituloText"
+            tools:ignore="HardcodedText" />
+
+        <TextView
             android:id="@+id/numID"
             android:layout_width="233dp"
             android:layout_height="31dp"
@@ -92,10 +115,9 @@
             android:id="@+id/divider"
             android:layout_width="409dp"
             android:layout_height="1dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="84dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dataText" />
 
@@ -103,11 +125,28 @@
             android:id="@+id/buttonCreate"
             android:layout_width="182dp"
             android:layout_height="85dp"
-            android:layout_marginStart="216dp"
-            android:layout_marginTop="204dp"
+            android:layout_marginStart="212dp"
+            android:layout_marginTop="252dp"
+            android:onClick="executeButton"
             android:text="Criar Incidente"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/buttonDelete"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="148dp"
+            android:layout_height="87dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="248dp"
+            android:onClick="deleteButton"
+            android:text="Deletar "
+            android:textColor="@color/design_default_color_error"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="@color/design_default_color_error"
             tools:ignore="HardcodedText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

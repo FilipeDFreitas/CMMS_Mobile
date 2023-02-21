@@ -6,28 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".base.Perfil">
 
+    <Button
+        android:id="@+id/buttonDeleteUser"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="440dp"
+        android:layout_marginEnd="284dp"
+        android:onClick="deleteUser"
+        android:text="Deletar"
+        android:textColor="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/design_default_color_error" />
+
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/userPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="(41)98460-3897"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+        app:layout_constraintEnd_toEndOf="@+id/userCPF"
+        app:layout_constraintTop_toBottomOf="@+id/userCPF" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName9"
+        android:id="@+id/userMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:enabled="false"
         android:inputType="textPersonName"
-        android:text="jorge.vic@ufpr.br"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName8"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8" />
+        app:layout_constraintEnd_toEndOf="@+id/userAddress"
+        app:layout_constraintTop_toBottomOf="@+id/userAddress" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/userID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="86dp"
@@ -35,50 +48,47 @@
         android:ems="10"
         android:enabled="false"
         android:inputType="textPersonName"
-        android:text="00001"
+        android:text="0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/userCPF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:enabled="false"
         android:inputType="textPersonName"
-        android:text="095.462.689-25"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName5"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintEnd_toEndOf="@+id/userName"
+        app:layout_constraintTop_toBottomOf="@+id/userName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Jorge Vicente"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintEnd_toEndOf="@+id/userID"
+        app:layout_constraintTop_toBottomOf="@+id/userID" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName8"
+        android:id="@+id/userAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="logo ali"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName7"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7" />
+        app:layout_constraintEnd_toEndOf="@+id/userPhone"
+        app:layout_constraintTop_toBottomOf="@+id/userPhone" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonSaveUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:layout_marginEnd="40dp"
+        android:onClick="saveUser"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName9" />
+        app:layout_constraintTop_toBottomOf="@+id/userMail" />
 
     <TextView
         android:id="@+id/textView3"
@@ -87,9 +97,9 @@
         android:layout_marginStart="16dp"
         android:text="ID"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName4"
+        app:layout_constraintBottom_toBottomOf="@+id/userID"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintTop_toTopOf="@+id/userID" />
 
     <TextView
         android:id="@+id/textView5"
@@ -158,8 +168,8 @@
         android:layout_width="201dp"
         android:layout_height="28dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName9" />
+        app:layout_constraintBottom_toTopOf="@+id/buttonSaveUser"
+        app:layout_constraintStart_toStartOf="@+id/userMail" />
 
     <androidx.constraintlayout.widget.Barrier
         android:layout_width="wrap_content"

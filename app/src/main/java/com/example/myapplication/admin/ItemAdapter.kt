@@ -7,9 +7,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.models.Item
+import com.example.myapplication.models.Tipo
 
-class ItemAdapter(private val mList: List<Item>) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
+class ItemAdapter(private val mList: List<Tipo>) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
     private lateinit var mListener : onItemClickListener
 
@@ -41,8 +41,8 @@ class ItemAdapter(private val mList: List<Item>) : RecyclerView.Adapter<ItemAdap
 
 
         // sets the text to the textview from our itemHolder class
-        holder.id.text = item.id
-        holder.status.text = item.titulo
+        holder.id.text = item.id.toString()
+        holder.status.text = item.name
 
 
     }

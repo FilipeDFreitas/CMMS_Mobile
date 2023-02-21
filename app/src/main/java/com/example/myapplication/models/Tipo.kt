@@ -1,21 +1,16 @@
 package com.example.myapplication.models
 
-data class Item(
+data class Tipo(
     val id: Int,
     val name:String,
-    val description:String,
-    val locationId: Int
+    val description:String
 
 ) : java.io.Serializable
 
-data class ItemList(
+data class TipoAPI(
     val entities: List<Tipo>
 )
 
-data class ItemAPI(
-    val entity: Item
-)
-
-data class ItemDeleteAPI(
+data class TipoDeleteAPI(
     val status: String
 )

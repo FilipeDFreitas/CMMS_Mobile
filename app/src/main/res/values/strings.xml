@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CMMS</string>
+    <string name="app_name">ArrumaUFPR</string>
     <string name="tipo">Tipo:</string>
     <string name="equipamento">Equipamento:</string>
     <string name="local">Local:</string>
